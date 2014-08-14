@@ -1,0 +1,36 @@
+---
+- name: Directory Exists | /data/log/logstash
+  file:
+    state: directory
+    path: /data/log/logstash
+    owner: logstash
+    group: logstash
+    mode: 0775
+  tags:
+    - directory-structure
+    - logging
+    - logstash
+
+- name: Configure | logstash | logfile
+  lineinfile:
+    state: present
+    dest: /etc/init/logstash.conf
+    regexp: '^  LS_LOG_FILE'
+    line: '  LS_LOG_FILE=/data/log/logstash/logstash.log'
+  notify: Reload Service | logstash
+  tags:
+    - configuration
+    - precise-configuration
+    - logging
+    - logstash
+
+- name: Upload Config | beaver | logstash
+  template:
+    src: etc/beaver/conf.d/logstash
+    dest: /etc/beaver/conf.d/logstash
+  tags:
+    - configuration
+    - template-configuration
+    - logging
+    - using-beaver
+    - logstash

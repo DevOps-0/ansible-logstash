@@ -1,0 +1,3 @@
+[/data/log/logstash/logstash.log]
+type: logstash
+tags: service

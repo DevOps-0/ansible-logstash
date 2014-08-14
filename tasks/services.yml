@@ -1,0 +1,5 @@
+---
+- name: Service Started | logstash
+  service:
+    state: started
+    name: logstash

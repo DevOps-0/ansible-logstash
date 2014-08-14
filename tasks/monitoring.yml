@@ -1,0 +1,14 @@
+---
+- name: Upload Config | monit | logstash
+  template:
+    src: etc/monit/conf.d/logstash
+    dest: /etc/monit/conf.d/logstash
+  notify: Reload Service | monit
+
+- name: Trigger All Callbacks
+  meta: flush_handlers
+
+- name: Confirm Monitoring | logstash
+  monit:
+    state: present
+    name: logstash
