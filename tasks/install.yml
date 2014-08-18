@@ -18,5 +18,4 @@
     state: latest
     pkg: "{{ item }}"
   with_items:
-    - openjdk-7-jre-headless
     - logstash

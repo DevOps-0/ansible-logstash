@@ -1,10 +1,10 @@
 ---
-- name: Directory Exists | /data/log/logstash
+- name: "Directory Exists | {{ logstash_log_root }}"
   file:
     state: directory
-    path: /data/log/logstash
-    owner: logstash
-    group: logstash
+    path: "{{ logstash_log_root }}"
+    owner: "{{ logstash_user }}"
+    group: "{{ logstash_group }}"
     mode: 0775
   tags:
     - directory-structure
@@ -16,7 +16,7 @@
     state: present
     dest: /etc/init/logstash.conf
     regexp: '^  LS_LOG_FILE'
-    line: '  LS_LOG_FILE=/data/log/logstash/logstash.log'
+    line: "  LS_LOG_FILE={{ logstash_log_path }}"
   notify: Reload Service | logstash
   tags:
     - configuration

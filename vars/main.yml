@@ -1,0 +1,6 @@
+---
+logstash_user: logstash
+logstash_group: logstash
+
+logstash_log_root: "{{ log_root }}/logstash"
+logstash_log_path: "{{ logstash_log_root }}/logstash.log"
