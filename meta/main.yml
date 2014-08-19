@@ -1,4 +1,4 @@
 ---
 dependencies:
-  - package/java
-  - package/zeromq
+  - role: package/java
+  - role: package/zeromq
