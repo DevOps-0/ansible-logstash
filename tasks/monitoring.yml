@@ -7,8 +7,3 @@
 
 - name: Trigger All Callbacks
   meta: flush_handlers
-
-- name: Confirm Monitoring | logstash
-  monit:
-    state: present
-    name: logstash
