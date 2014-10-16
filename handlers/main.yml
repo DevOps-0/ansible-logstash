@@ -7,5 +7,5 @@
     state: restarted
     name: logstash
   tags:
-    - monit
+    - using-monit
     - disruptive
