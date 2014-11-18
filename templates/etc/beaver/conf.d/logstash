@@ -1,3 +1,0 @@
-[{{ logstash_log_path }}]
-type: logstash
-tags: service

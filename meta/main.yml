@@ -6,3 +6,9 @@ dependencies:
 
   - role: package/java
   - role: package/zeromq
+
+  - role: meta/logging
+    logging_name: logstash 
+    logging_files:
+      - tags: 'service'
+        path: "{{ logstash_log_path }}"
