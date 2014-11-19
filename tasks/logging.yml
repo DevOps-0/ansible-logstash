@@ -1,16 +1,4 @@
 ---
-- name: "Directory Exists | {{ logstash_log_root }}"
-  file:
-    state: directory
-    path: "{{ logstash_log_root }}"
-    owner: "{{ logstash_user }}"
-    group: "{{ logstash_group }}"
-    mode: 0775
-  tags:
-    - directory-structure
-    - logging
-    - logstash
-
 - name: Configure | logstash | logfile
   lineinfile:
     state: present
