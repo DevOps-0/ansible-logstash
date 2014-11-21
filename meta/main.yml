@@ -8,9 +8,7 @@ dependencies:
   - role: package/zeromq
 
   - role: meta/logging
-    logging_name: logstash
-    logging_user: "{{ logstash_user }}"
-    logging_group: "{{ logstash_group }}"
+    logging_name: logstash 
     logging_files:
       - tags:
           - service
