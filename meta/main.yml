@@ -12,5 +12,6 @@ dependencies:
     logging_user: "{{ logstash_user }}"
     logging_group: "{{ logstash_group }}"
     logging_files:
-      - tags: 'service'
+      - tags:
+          - service
         path: "{{ logstash_log_path }}"
