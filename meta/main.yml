@@ -13,3 +13,6 @@ dependencies:
       - tags:
           - service
         path: "{{ logstash_log_path }}"
+
+  - role: package/logrotate
+    logrotate_name: logstash
