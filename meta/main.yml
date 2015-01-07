@@ -7,7 +7,7 @@ dependencies:
   - role: package/java
   - role: package/zeromq
 
-  - role: meta/logging
+  - role: meta/log-aggregator
     logging_name: logstash 
     logging_files:
       - tags:
