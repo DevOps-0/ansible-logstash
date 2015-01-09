@@ -7,12 +7,12 @@ dependencies:
   - role: package/java
   - role: package/zeromq
 
-  - role: meta/log-aggregator
-    logging_name: logstash 
-    logging_files:
-      - tags:
-          - service
-        path: "{{ logstash_log_path }}"
+# New logging method awaiting logstash regex formatting
+#   - role: packages/fluentd
+#     fluentd_sources:
+#       - path: "{{ logstash_log_path }}"
+#         format: ''
+#         tag: logstash.service
 
   - role: package/logrotate
     logrotate_name: logstash
