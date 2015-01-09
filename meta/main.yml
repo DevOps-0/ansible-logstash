@@ -8,7 +8,7 @@ dependencies:
   - role: package/zeromq
 
 # New logging method awaiting logstash regex formatting
-#   - role: packages/fluentd
+#   - role: package/fluentd
 #     fluentd_sources:
 #       - path: "{{ logstash_log_path }}"
 #         format: ''
