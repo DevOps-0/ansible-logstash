@@ -4,3 +4,5 @@ logstash_group: logstash
 
 logstash_log_root: "{{ log_root | default('/var/log') }}/logstash"
 logstash_log_path: "{{ logstash_log_root }}/logstash.log"
+
+logstash_config_root: "/etc/logstash"
