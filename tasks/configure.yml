@@ -1,14 +1,14 @@
 ---
 - name: Upload configuration templates | Logstash
-	template:
-	  src: {{ item.name }}
-	  dest: {{ logstash_config_root }}/conf.d/{{ item.name }}
+  template:
+    src: {{ item.name }}
+    dest: {{ logstash_config_root }}/conf.d/{{ item.name }}
 
-	with_items:
-	  - { name: '00-input' }
-	  - { name: '01-nginx_access' }
-	  - { name: '02-php_error' }
-	  - { name: '99-output' }
+  with_items:
+    - { name: '00-input' }
+    - { name: '01-nginx_access' }
+    - { name: '02-php_error' }
+    - { name: '99-output' }
 
 - name: Upload certificate | Logstash
   copy:
