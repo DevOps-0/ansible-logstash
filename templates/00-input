@@ -1,3 +1,4 @@
+{{ ansible_managed }}
 input {
   lumberjack {
     port => 5043
