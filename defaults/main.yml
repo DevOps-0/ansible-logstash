@@ -6,3 +6,7 @@ logstash_log_root: "{{ log_root | default('/var/log') }}/logstash"
 logstash_log_path: "{{ logstash_log_root }}/logstash.log"
 
 logstash_config_root: "/etc/logstash"
+
+logstash_elasticsearch_host: "logs.logger-{{ environment_tier }}.teluswebteam.com"
+
+logstash_lumberjack_port: 5043
