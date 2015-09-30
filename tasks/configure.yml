@@ -9,3 +9,13 @@
 	  - { name: '01-nginx_access' }
 	  - { name: '02-php_error' }
 	  - { name: '99-output' }
+
+- name: Upload certificate | Logstash
+  copy:
+    content: {{ logstash_lumberjack_aggregator_key }}
+    dest: {{ logstash_config_root }}/logstash.key
+
+- name: Upload key | Logstash
+  copy:
+    content: {{ logstash_lumberjack_aggregator_crt }}
+    dest: {{ logstash_config_root }}/logstash.crt
