@@ -1,0 +1,38 @@
+filter {
+  if [type] == "nginx_access" {
+    grok {
+      match => [
+        "message", "%{IPV4:remote_addr} - %{GREEDYDATA:remote_user} \[%{TIMESTAMP_ISO8601:time_stamp}\] \"%{WORD:method} %{URIPATHPARAM:url} HTTP/%{NUMBER:http.version}\" %{NUMBER:status} %{NUMBER:bytes_sent:int} \"%{GREEDYDATA:http.referer}\" \"%{GREEDYDATA:user_agent}\" \| %{NUMBER:request_time:float} . %{NUMBER:connection_requests:int} %{GREEDYDATA:gzip_ratio:float} %{GREEDYDATA:ssl_protocol}/%{GREEDYDATA:ssl_cipher}"
+      ]
+    }
+
+    if [url] =~ /\?/ {
+      mutate {
+        split => { "url" => "?" }
+        add_field => { "url.params" => "%{url[1]}" }
+        add_field => { "url.path" => "%{url[0]}" }
+      }
+      mutate {
+        remove_field => [ "url" ]
+      }
+    } else {
+      mutate {
+        rename => { "url" => "path" }
+      }
+    }
+    date {
+      locale => "en"
+      match => [ "time_stamp", "ISO8601" ]
+      target => "@timestamp"
+      remove_field => "time_stamp"
+    }
+    useragent {
+      source => "user_agent"
+      prefix => "useragent."
+    }
+
+    geoip {
+      source => "remote_addr"
+    }
+  }
+}

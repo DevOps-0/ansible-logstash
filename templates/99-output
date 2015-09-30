@@ -1,0 +1,9 @@
+output {
+  stdout { codec => rubydebug }
+  elasticsearch_http {
+    host => "logs.data-production.teluswebteam.com"
+    user => "digital"
+    password => "notwebchannel"
+    index => "logstash-%{project}-%{environment_tier}-%{+YYYY.MM.dd}"
+  }
+}
