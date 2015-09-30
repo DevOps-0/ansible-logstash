@@ -1,8 +1,8 @@
 ---
 - name: Upload configuration templates | Logstash
   template:
-    src: {{ item.name }}
-    dest: {{ logstash_config_root }}/conf.d/{{ item.name }}
+    src: "{{ item.name }}"
+    dest: "{{ logstash_config_root }}/conf.d/{{ item.name }}"
 
   with_items:
     - { name: '00-input' }
@@ -12,10 +12,10 @@
 
 - name: Upload certificate | Logstash
   copy:
-    content: {{ logstash_lumberjack_aggregator_key }}
-    dest: {{ logstash_config_root }}/logstash.key
+    content: "{{ logstash_lumberjack_aggregator_key }}"
+    dest: "{{ logstash_config_root }}/logstash.key"
 
 - name: Upload key | Logstash
   copy:
-    content: {{ logstash_lumberjack_aggregator_crt }}
-    dest: {{ logstash_config_root }}/logstash.crt
+    content: "{{ logstash_lumberjack_aggregator_crt }}"
+    dest: "{{ logstash_config_root }}/logstash.crt"
