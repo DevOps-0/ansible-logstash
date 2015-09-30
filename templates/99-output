@@ -3,7 +3,7 @@
 output {
   stdout { codec => rubydebug }
   elasticsearch_http {
-    host => "logs.data-production.teluswebteam.com"
+    host => "{{ logstash_elasticsearch_host }}"
     user => "digital"
     password => "notwebchannel"
     index => "logstash-%{project}-%{environment_tier}-%{+YYYY.MM.dd}"
