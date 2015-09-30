@@ -2,10 +2,11 @@
 
 output {
   stdout { codec => rubydebug }
-  elasticsearch_http {
+  elasticsearch {
     host => "{{ logstash_elasticsearch_host }}"
-    user => "digital"
-    password => "notwebchannel"
+    cluster => "elasticsearch_cluster_production"
+    #user => "digital"
+    #password => "notwebchannel"
     index => "logstash-%{project}-%{environment_tier}-%{+YYYY.MM.dd}"
   }
 }
