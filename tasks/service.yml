@@ -1,0 +1,10 @@
+---
+- name: Service Started | Logstash
+  service:
+    state: started
+    name: logstash
+    enabled: yes
+  tags:
+    - validation
+    - using-service
+    - newrelic
