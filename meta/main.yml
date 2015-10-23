@@ -15,10 +15,3 @@ galaxy_info:
       - all
   categories:
     - system
-
-# New logging method awaiting logstash regex formatting
-#   - role: package/fluentd
-#     fluentd_sources:
-#       - path: "{{ logstash_log_path }}"
-#         format: ''
-#         tag: logstash.service
