@@ -12,10 +12,10 @@
 
 - name: Upload certificate | Logstash
   copy:
-    content: "{{ logstash_lumberjack_aggregator_key }}"
+    content: "{{ logstash_log_courier_key }}"
     dest: "{{ logstash_config_root }}/logstash.key"
 
 - name: Upload key | Logstash
   copy:
-    content: "{{ logstash_lumberjack_aggregator_crt }}"
+    content: "{{ logstash_log_courier_crt }}"
     dest: "{{ logstash_config_root }}/logstash.crt"
