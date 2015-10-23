@@ -3,10 +3,11 @@
 output {
   stdout { codec => rubydebug }
   elasticsearch {
+    protocol => http
     host => "{{ logstash_elasticsearch_host }}"
-    cluster => "elasticsearch_cluster_production"
-    #user => "digital"
-    #password => "notwebchannel"
     index => "logstash-%{project}-%{environment_tier}-%{+YYYY.MM.dd}"
+    workers => 16
+    flush_size => 10000
+    idle_flush_time => 5
   }
 }

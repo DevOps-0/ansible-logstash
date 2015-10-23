@@ -1,8 +1,8 @@
 # {{ ansible_managed }}
 
 input {
-  lumberjack {
-    port => {{ logstash_lumberjack_port }}
+  courier {
+    port => {{ logstash_courier_port }}
     ssl_certificate => "{{ logstash_config_root }}/logstash.crt"
     ssl_key => "{{ logstash_config_root }}/logstash.key"
   }
