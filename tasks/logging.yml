@@ -12,4 +12,5 @@
     - logstash
   with_items:
     - "{{ logstash_log_root }}"
+    - "{{ logstash_config_root }}"
     - "{{ logstash_config_root }}/conf.d"
