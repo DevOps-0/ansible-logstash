@@ -1,6 +1,6 @@
 ---
-logstash_user: logstash
-logstash_group: logstash
+logstash_user: www-data
+logstash_group: www-data
 
 logstash_log_root: "{{ log_root | default('/var/log') }}/logstash"
 logstash_log_path: "{{ logstash_log_root }}/logstash.log"
