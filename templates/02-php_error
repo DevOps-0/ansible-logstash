@@ -9,8 +9,9 @@ filter {
     }
     grok {
       match => [
-        "message", "\[%{GREEDYDATA:time_stamp}\] \[%{WORD:project_abbr}\] \[%{GREEDYDATA:session_id}\] \[%{WORD:log_level}\] - IP address: %{IPV4:ip_address}",
-        "message", "\[%{GREEDYDATA:time_stamp}\] \[%{WORD:project_abbr}\] \[%{GREEDYDATA:session_id}\] \[%{WORD:log_level}\] - %{GREEDYDATA:data}",
+        "message", "\[%{GREEDYDATA:time_stamp}\] \[%{WORD:project_abbr}\] \[%{GREEDYDATA:session_id}:%{GREEDYDATA:request_id}\] \[%{WORD:log_level}\] - \[Performance-REST\]: REST call to %{GREEDYDATA:rest_url} took %{GREEDYDATA:rest_response_time:float}",
+        "message", "\[%{GREEDYDATA:time_stamp}\] \[%{WORD:project_abbr}\] \[%{GREEDYDATA:session_id}:%{GREEDYDATA:request_id}\] \[%{WORD:log_level}\] - IP address: %{IPV4:ip_address}",
+        "message", "\[%{GREEDYDATA:time_stamp}\] \[%{WORD:project_abbr}\] \[%{GREEDYDATA:session_id}:%{GREEDYDATA:request_id}\] \[%{WORD:log_level}\] - %{GREEDYDATA:data}",
         "message", "\[%{GREEDYDATA:time_stamp}\] %{GREEDYDATA:content}"
       ]
     }
