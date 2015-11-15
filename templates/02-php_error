@@ -2,11 +2,11 @@
 
 filter {
   if [type] == "php_error" {
-    multiline {
-      pattern => "^\["
-      negate => true
-      what => previous
-    }
+#    multiline {
+#      pattern => "^\["
+#      negate => true
+#      what => previous
+#    }
     grok {
       match => {
         "message" => [
