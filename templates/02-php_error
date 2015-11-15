@@ -10,22 +10,22 @@ filter {
     grok {
       match => {
         "message" => [
-          "\[%{GREEDYDATA:time_stamp}\] \[%{WORD:project_abbr}\] \[%{GREEDYDATA:session_id}:%{GREEDYDATA:request_id}\] \[%{WORD:log_level}\] - \[Performance-REST\]: REST call to %{GREEDYDATA:rest_url} took %{GREEDYDATA:rest_response_time:float}"
+          "\[%{GREEDYDATA:timestamp}\] \[%{WORD:project_abbr}\] \[%{GREEDYDATA:session_id}:%{GREEDYDATA:request_id}\] \[%{WORD:log_level}\] - \[Performance-REST\]: REST call to %{GREEDYDATA:rest_url} took %{GREEDYDATA:rest_response_time:float}"
 
-          "\[%{GREEDYDATA:time_stamp}\] \[%{WORD:project_abbr}\] \[%{GREEDYDATA:session_id}:%{GREEDYDATA:request_id}\] \[%{WORD:log_level}\] - IP address: %{IPV4:ip_address}",
+          "\[%{GREEDYDATA:timestamp}\] \[%{WORD:project_abbr}\] \[%{GREEDYDATA:session_id}:%{GREEDYDATA:request_id}\] \[%{WORD:log_level}\] - IP address: %{IPV4:ip_address}",
 
-          "\[%{GREEDYDATA:time_stamp}\] \[%{WORD:project_abbr}\] \[%{GREEDYDATA:session_id}:%{GREEDYDATA:request_id}\] \[%{WORD:log_level}\] - %{GREEDYDATA:data}",
+          "\[%{GREEDYDATA:timestamp}\] \[%{WORD:project_abbr}\] \[%{GREEDYDATA:session_id}:%{GREEDYDATA:request_id}\] \[%{WORD:log_level}\] - %{GREEDYDATA:data}",
 
-          "\[%{GREEDYDATA:time_stamp}\] %{GREEDYDATA:content}"
+          "\[%{GREEDYDATA:timestamp}\] %{GREEDYDATA:content}"
         ]
       }
     }
     date {
       locale => "en"
-      match => ["time_stamp", "dd-MMM-YYYY HH:mm:ss zzz"]
+      match => ["timestamp", "dd-MMM-YYYY HH:mm:ss zzz"]
       timezone => "UTC"
       target => "@timestamp"
-      remove_field => "time_stamp"
+      remove_field => "timestamp"
     }
     if [ip_address] {
       geoip {
