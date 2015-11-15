@@ -19,3 +19,5 @@
   copy:
     content: "{{ logstash_log_courier_crt }}"
     dest: "{{ logstash_config_root }}/logstash.crt"
+
+# Add -w 16 to init file
