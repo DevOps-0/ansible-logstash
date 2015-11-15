@@ -5,7 +5,7 @@ filter {
     grok {
       match => {
         "message" => [
-          "%{IPV4:remote_addr} - %{GREEDYDATA:remote_user} \[%{TIMESTAMP_ISO8601:time_stamp}\] \"%{WORD:method} %{URIPATHPARAM:url} HTTP/%{NUMBER:http.version}\" %{NUMBER:status} %{NUMBER:bytes_sent:int} \"%{GREEDYDATA:http.referer}\" \"%{GREEDYDATA:user_agent}\" \| %{NUMBER:request_time:float} . %{NUMBER:connection_requests:int} %{GREEDYDATA:gzip_ratio:float} %{GREEDYDATA:ssl_protocol}/%{GREEDYDATA:ssl_cipher}"
+          "%{IPV4:remote_addr} - %{GREEDYDATA:remote_user} \[%{TIMESTAMP_ISO8601:timestamp}\] \"%{WORD:method} %{URIPATHPARAM:url} HTTP/%{NUMBER:http_version}\" %{NUMBER:status} %{NUMBER:bytes_sent:int} \"%{GREEDYDATA:http_referer}\" \"%{GREEDYDATA:user_agent}\" \| %{NUMBER:request_time:float} . %{NUMBER:connection_requests:int} %{GREEDYDATA:gzip_ratio:float} %{GREEDYDATA:ssl_protocol}/%{GREEDYDATA:ssl_cipher}"
         ]
       }
     }
@@ -26,9 +26,9 @@ filter {
     }
     date {
       locale => "en"
-      match => [ "time_stamp", "ISO8601" ]
+      match => [ "timestamp", "ISO8601" ]
       target => "@timestamp"
-      remove_field => "time_stamp"
+      remove_field => "timestamp"
     }
     useragent {
       source => "user_agent"
