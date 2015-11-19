@@ -13,8 +13,8 @@ filter {
     if [url] =~ /\?/ {
       mutate {
         split => { "url" => "?" }
-        add_field => { "url.params" => "%{url[1]}" }
-        add_field => { "url.path" => "%{url[0]}" }
+        add_field => { "url_params" => "%{url[1]}" }
+        add_field => { "url_path" => "%{url[0]}" }
       }
       mutate {
         remove_field => [ "url" ]
@@ -32,7 +32,7 @@ filter {
     }
     useragent {
       source => "user_agent"
-      prefix => "useragent."
+      prefix => "useragent"
     }
 
     geoip {
