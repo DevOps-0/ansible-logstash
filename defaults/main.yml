@@ -7,6 +7,6 @@ logstash_log_path: "{{ logstash_log_root }}/logstash.log"
 
 logstash_config_root: "/etc/logstash"
 
-logstash_elasticsearch_host: "logs.logger-{{ environment_tier }}.teluswebteam.com"
+logstash_elasticsearch_host: "client.logger-{{ environment_tier }}.teluswebteam.com"
 
 logstash_courier_port: 5044
