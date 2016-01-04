@@ -3,9 +3,24 @@
 output {
   elasticsearch {
     hosts => ["{{ logstash_elasticsearch_host }}"]
+    # ["client.logger-production.teluswebteam.com" , "logs.logger-production.teluswebteam.com" , "10.10.12.52", "10.10.12.117", "10.10.12.15" ]
     index => "logstash-%{project}-%{environment_tier}-%{+YYYY.MM.dd}"
-    workers => 8
+    workers => 4
     flush_size => 1000
     idle_flush_time => 1
   }
+#  if [log_level] == "ERROR" {
+#    s3 {
+#      access_key_id => "{{ aws_access_key_id }}"
+#      secret_access_key => "{{ aws_secret_access_key }}"
+#      prefix => "logs/"
+#      bucket => "logs
+#      size_file => 2048
+#      time_file => 5
+#      format => "plain"
+#      canned_acl => "private"
+#      tags => ["elasticsearch", "logstash", "kibana", "%{project}", "%{environment_tier}", "%{+YYYY.MM.dd}"]
+#    }
+#  }
+
 }

@@ -10,15 +10,22 @@ filter {
     grok {
       match => {
         "message" => [
-          "\[%{GREEDYDATA:timestamp}\] \[%{GREEDYDATA:session_id}:%{GREEDYDATA:request_id}\] \[%{WORD:log_level}\] - \[Performance-REST\]: REST call to %{GREEDYDATA:rest_url} took %{GREEDYDATA:rest_response_time:float}",
+           "\[%{GREEDYDATA:timestamp}\] \[%{GREEDYDATA:session_id}:%{GREEDYDATA:request_id}\] \[%{WORD:log_level}\] - {%{GREEDYDATA:json_object}",
 
-          "\[%{GREEDYDATA:timestamp}\] \[%{GREEDYDATA:session_id}:%{GREEDYDATA:request_id}\] \[%{WORD:log_level}\] - IP address: %{IPV4:ip_address}",
+           "\[%{GREEDYDATA:timestamp}\] \[USS\] %{GREEDYDATA:content}",
 
-          "\[%{GREEDYDATA:timestamp}\] \[%{GREEDYDATA:session_id}:%{GREEDYDATA:request_id}\] \[%{WORD:log_level}\] - %{GREEDYDATA:data}",
+           "\[%{GREEDYDATA:timestamp}\] \[%{GREEDYDATA:session_id}:%{GREEDYDATA:request_id}\] \[%{WORD:log_level}\] - %{GREEDYDATA:data}" ,
 
-          "\[%{GREEDYDATA:timestamp}\] %{GREEDYDATA:content}",
-          "\[%{GREEDYDATA:timestamp}\] \[USS\] %{GREEDYDATA:content}"
+           "\[%{GREEDYDATA:timestamp}\] %{GREEDYDATA:content}"
         ]
+      }
+    }
+    if [json_object] {
+      mutate {
+        replace => { "json_object" => "{%{json_object}" }
+      }
+      json {
+        source => "json_object"
       }
     }
     if [data] {
