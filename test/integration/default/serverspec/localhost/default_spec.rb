@@ -17,9 +17,4 @@ describe 'ansible-logstash::default' do
     it { should exist }
   end
 
-  describe service('logstash') do
-    it { should be_installed }
-    it { should be_running }
-  end
-
 end
