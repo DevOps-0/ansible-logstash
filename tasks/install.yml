@@ -2,6 +2,6 @@
 - name: Install Packages | apt
   apt:
     state: latest
-    pkg: "{{ item }}"
+    name: "{{ item }}"
   with_items:
     - logstash
