@@ -10,3 +10,6 @@ logstash_config_root: "/etc/logstash"
 logstash_elasticsearch_host: "client.logger-{{ environment_tier }}.teluswebteam.com"
 
 logstash_courier_port: 5044
+
+logstash_broker: false
+logstash_indexer: false
