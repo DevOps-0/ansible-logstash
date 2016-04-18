@@ -1,15 +1,4 @@
 ---
-- name: Upload certificate | Logstash
-  copy:
-    content: "{{ logstash_log_courier_key }}"
-    dest: "{{ logstash_config_root }}/logstash.key"
-
-- name: Upload key | Logstash
-  copy:
-    content: "{{ logstash_log_courier_crt }}"
-    dest: "{{ logstash_config_root }}/logstash.crt"
-
-# Upload configuration
 - name: Upload configuration templates | Logstash
   template:
     src: "{{ item.name }}"
