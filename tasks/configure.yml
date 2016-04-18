@@ -9,14 +9,33 @@
     content: "{{ logstash_log_courier_crt }}"
     dest: "{{ logstash_config_root }}/logstash.crt"
 
+# Upload configuration
 - name: Upload configuration templates | Logstash
   template:
     src: "{{ item.name }}"
     dest: "{{ logstash_config_root }}/conf.d/{{ item.name }}"
 
   with_items:
-    - { name: '00-input' }
-    - { name: '01-nginx_access' }
-    - { name: '02-php_error' }
-    - { name: '99-output' }
+    - { name: 'shipper/input.conf' }
+    - { name: 'shipper/output.conf' }
+  when: logstash_shipper
+
+- name: Upload configuration templates | Logstash
+  template:
+    src: "{{ item.name }}"
+    dest: "{{ logstash_config_root }}/conf.d/{{ item.name }}"
+
+  with_items:
+    - { name: 'broker/input.conf' }
+    - { name: 'broker/output.conf' }
   when: logstash_broker
+
+- name: Upload configuration templates | Logstash
+  template:
+    src: "{{ item.name }}"
+    dest: "{{ logstash_config_root }}/conf.d/{{ item.name }}"
+
+  with_items:
+    - { name: 'indexer/input.conf' }
+    - { name: 'indexer/output.conf' }
+  when: logstash_indexer

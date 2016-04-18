@@ -5,9 +5,3 @@
     name: "{{ item }}"
   with_items:
     - logstash
-
-- name: Install Plugin | log-courier
-  command: "{{ item }}"
-  with_items:
-    - /opt/logstash/bin/plugin install logstash-input-courier
-    - /opt/logstash/bin/plugin install logstash-output-courier
