@@ -17,7 +17,7 @@
   with_items:
     - { name: 'input.conf' }
     - { name: 'output.conf' }
-  when: logstash_broker
+  when: logstash_aggregator
 
 - name: Upload configuration templates | Logstash
   template:

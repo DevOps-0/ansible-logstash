@@ -12,5 +12,5 @@ logstash_elasticsearch_host: "client.logger-{{ environment_tier }}.teluswebteam.
 logstash_courier_port: 5044
 
 logstash_shipper: false
-logstash_broker: false
+logstash_aggregator: false
 logstash_indexer: false
