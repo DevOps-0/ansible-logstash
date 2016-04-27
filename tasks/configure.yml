@@ -28,3 +28,9 @@
     - { name: 'input.conf' }
     - { name: 'output.conf' }
   when: logstash_indexer
+
+- name: Add Filter for overly large messages | Logstash
+  template:
+    src: "shipper/filter.conf"
+    dest: "{{ logstash_config_root }}/conf.d/filter.conf"
+  when: logstash_shipper_remove_large_events

@@ -14,3 +14,5 @@ logstash_courier_port: 5044
 logstash_shipper: false
 logstash_aggregator: false
 logstash_indexer: false
+
+logstash_shipper_remove_large_events: true
