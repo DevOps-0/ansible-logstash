@@ -8,6 +8,8 @@
     - { name: 'input.conf' }
     - { name: 'output.conf' }
   when: logstash_shipper
+  tags:
+    - logstash
 
 - name: Upload configuration templates | Logstash
   template:
@@ -18,6 +20,8 @@
     - { name: 'input.conf' }
     - { name: 'output.conf' }
   when: logstash_aggregator
+  tags:
+    - logstash
 
 - name: Upload configuration templates | Logstash
   template:
@@ -28,9 +32,13 @@
     - { name: 'input.conf' }
     - { name: 'output.conf' }
   when: logstash_indexer
+  tags:
+    - logstash
 
 - name: Add Filter for overly large messages | Logstash
   template:
     src: "shipper/filter.conf"
     dest: "{{ logstash_config_root }}/conf.d/filter.conf"
   when: logstash_shipper_remove_large_events
+  tags:
+    - logstash
