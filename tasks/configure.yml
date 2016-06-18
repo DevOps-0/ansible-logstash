@@ -43,10 +43,16 @@
   tags:
     - logstash
 
-- name: Upload default logstash template
+#- name: Upload default logstash template
+#  template:
+#    src: "etc/default/logstash"
+#    dest: "/etc/default/logstash"
+#  tags:
+#    - logstash
+- name: Upload logrotate from elastic/logstash as template
   template:
-    src: "etc/default/logstash"
-    dest: "/etc/default/logstash"
+    src: "etc/logrotate.d/logstash"
+    dest: "/etc/logrotate.d/logstash"
   tags:
     - logstash
 
