@@ -42,3 +42,11 @@
   when: logstash_shipper_remove_large_events
   tags:
     - logstash
+
+- name: Upload default logstash template
+  template:
+    src: "etc/default/logstash"
+    dest: "/etc/default/logstash"
+  tags:
+    - logstash
+
